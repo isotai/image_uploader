@@ -21,12 +21,10 @@
 ### モデル
 
 **article table**
-
 mount_uploader :image,ImageUploader
-has many img
+
 - id
 - name
-- pass
 - text
 - image 
 ```rails g migration add_image_to_users avatar:string```
