@@ -1,24 +1,8 @@
-# README
+# 仕様
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Kiberaの記事中への画像アップロード機能だけを切り取ったイメージ。**
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## GUIにドラック&ドロップまたは、コピーアンドペーストで画像をアップロードする
+## 画像は非同期で保存する
+## 画像アップロード後は非同期で画面にアップロードされた画像を表示する。
+## アップロードした画像の一覧を表示して、リンククリックで画像を表示する。
