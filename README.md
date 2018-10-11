@@ -41,7 +41,7 @@ has many img
 画像をアップロードする。ここで非同期アップロード&プレビュー
 
 
-**考え中**
+## 考え中
 
 *画像UP*
 1. 編集画面に画像をドラックアンドドロップ　
@@ -61,7 +61,7 @@ https://qiita.com/maruyam-a/items/cf0168f91d934b449a07
 4.変換済みのHTMLを返して表示 
 
 
-**reference:**
+## reference
 Markdownする
 https://qiita.com/michiharujp/items/2916d71af273a8b0007f
 
