@@ -48,9 +48,10 @@ $(function () {
   function sendFileToServer(formData) {
     console.log(formData)
     $(this).css('border', '1px solid #e6e6e6');
+    var id = $(".aricle_id").text();
 
     $.ajax({
-      url: '/api',
+      url: '/article/' + id + '/upload_image',
       method: 'post',
       dataType: 'json',
       // dataに FormDataを指定
