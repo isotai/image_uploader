@@ -14,7 +14,7 @@ img {
 
 .title {
   height: 60px;
-  background-color: bisque;
+  background-color: rgb(231, 231, 231);
 }
 
 .editor {
@@ -56,6 +56,10 @@ img {
   box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.05);
 }
 
+
+.aricle_id {
+  display: none
+}
 
 .preview--color--white {
   background-color: white

@@ -1,3 +1,4 @@
+// ドラックアンドドロップーーーー＞
 $(function () {
   var obj = $(".dragandrophandler");
   // 色変える
@@ -12,14 +13,45 @@ $(function () {
   });
   // ドロップ
   obj.on('drop', function (e) {
-    $(this).css('border', '2px dotted #0B85A1');
+    // $(this).css('border', '2px dotted #0B85A1');
+    e.stopPropagation();
     e.preventDefault();
     var files = e.originalEvent.dataTransfer.files;
     handleFileUpload(files, obj);
   });
 
+  obj.on('dragend', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    obj.css('border', '2px solid #e6e6e6');
+  });
 
-  // ドロップエリア以外にドロップされた時に表示しない
+  //コピペで画像アップ--->
+  $(".editor--textbox").on('paste', function (event) {
+    // event からクリップボードのアイテムを取り出す
+    var items = event.originalEvent.clipboardData.items; // ここがミソ
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+
+      if (item.type.indexOf("string") != -1) {
+
+
+      }
+      if (item.type.indexOf("image") != -1) {
+        // 画像のみサーバへ送信する
+        var file = item.getAsFile();
+        var fd = new FormData();
+        fd.append('file', file);
+        console.log(fd)
+        sendFileToServer(fd);
+        // upload_file_with_ajax(file);
+        event.preventDefault();
+      }
+    }
+  });
+  //コピペで画像アップ<---
+
+  // ドロップエリア以外にドロップされた時に表示しないーー＞
   $(document).on('dragenter', function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -27,12 +59,15 @@ $(function () {
   $(document).on('dragover', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    obj.css('border', '2px dotted #0B85A1');
+
   });
   $(document).on('drop', function (e) {
     e.stopPropagation();
     e.preventDefault();
   });
+  // ＜ーードロップエリア以外にドロップされた時に表示しない
+
+
 
   function handleFileUpload(files, obj) {
     for (var i = 0; i < files.length; i++) {
@@ -46,8 +81,8 @@ $(function () {
   }
 
   function sendFileToServer(formData) {
-    console.log(formData)
-    $(this).css('border', '1px solid #e6e6e6');
+    obj.css('border', '2px solid #e6e6e6');
+
     var id = $(".aricle_id").text();
 
     $.ajax({
@@ -73,6 +108,7 @@ $(function () {
 
   }
 
+
   function insertText(url) {
 
     var textarea = document.querySelector('textarea');
@@ -89,6 +125,9 @@ $(function () {
 
     textarea.value = sentence;
   };
+
+
+  // ドラックアンドドロップ＜ーーーー
 
 
   // textの自動保存ーーーー＞
@@ -130,7 +169,6 @@ $(function () {
         //contentType: falsecdq
       }).done(function (res) {
         // success
-        console.log("done")
         $(".editor--preview--box").html(res)
 
       }).fail(function (jqXHR, textStatus, errorThrown) {

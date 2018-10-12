@@ -16,6 +16,7 @@ class ArticleController < ApplicationController
 
   def upload_image
     a = Article.find(params[:id])
+    #  byebug
     a.image =  params[:file]
     a.save
     url = a.image.url
