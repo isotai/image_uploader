@@ -132,6 +132,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redcarpet (3.4.0)
     ruby_dep (1.5.0)
     sass (3.6.0)
       sass-listen (~> 4.0.0)
@@ -195,6 +196,7 @@ DEPENDENCIES
   normalize-rails
   puma (~> 3.11)
   rails (~> 5.2.1)
+  redcarpet
   sass-rails (~> 5.0)
   slim-rails
   spring

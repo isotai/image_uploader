@@ -6,6 +6,12 @@
   background-color: #e6e6e6;
 }
 
+img {
+  border-style: none;
+  width: 70%;
+}
+
+
 .title {
   height: 60px;
   background-color: bisque;

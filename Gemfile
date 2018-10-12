@@ -42,6 +42,7 @@ group :development, :test do
   gem 'slim-rails'
   gem 'normalize-rails'
   gem "jquery-rails"
+  gem 'redcarpet'
 end
 
 group :development do

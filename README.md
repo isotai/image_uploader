@@ -81,3 +81,4 @@ http://www.it-view.net/drag-and-drop-file-upload-jquery-178.html
 
 partial 更新
 https://qiita.com/fezrestia/items/e669107a4a6e66618738
+

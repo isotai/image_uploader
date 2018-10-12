@@ -63,7 +63,7 @@ $(function () {
     }).done(function (res) {
       // success
       var url = res.url
-      insertText("(img)" + "[" + url + "]")
+      insertText("![img]" + "(" + url + ")")
 
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -89,5 +89,59 @@ $(function () {
 
     textarea.value = sentence;
   };
+
+
+  // textの自動保存ーーーー＞
+
+  var stack = []; //入力数を保存する変数
+  $(".editor--textbox").on('keyup', function (e) {
+
+    stack.push(1); //入力ごとに値を追加する
+
+    //入力後0.3秒後
+    setTimeout(function () {
+      stack.pop(); //中身を一つ取り出す
+
+      //取り出したstackの中身がなければ処理をする
+      //stackの中身がなくなるのは、一番最後の入力から0.3秒後になる
+      //なので、一番最後の入力から0.3秒後に以下の処理が走る
+      if (stack.length == 0) {
+        //最後キー入力後に処理したいイベント
+        sendTextToServer()
+
+        stack = []; //一応stackを初期化
+      }
+    }, 500);
+
+    function sendTextToServer() {
+      var userText = $(".editor--text").val();
+      var id = $(".aricle_id").text();
+      $.ajax({
+        url: '/article/' + id,
+        method: 'PATCH',
+        dataType: 'html',
+        // dataに FormDataを指定
+        data: {
+          text: userText
+        },
+        // Ajaxがdataを整形しない指定
+        // processData: false,
+        // contentTypeもfalseに指定
+        //contentType: falsecdq
+      }).done(function (res) {
+        // success
+        console.log("done")
+        $(".editor--preview--box").html(res)
+
+      }).fail(function (jqXHR, textStatus, errorThrown) {
+        // fail
+        $(".editor--preview--box").html("<h1>HIHI</hi>")
+        console.log('ERROR', jqXHR, textStatus, errorThrown);
+      });
+    }
+
+  });
+
+  // textの自動保存　＜ーーーー
 
 });

@@ -7,9 +7,11 @@ class ArticleController < ApplicationController
     # "/article/#{@Article.id}/edit"
   end
 
-  def edit
-    # byebug
-
+  def update
+    a = Article.find(params[:id])
+    a.text = params[:text]
+    #md_to_html("#hihihi")
+    render partial: 'ajax_text', locals: { text: a.text}
   end
 
   def upload_image
@@ -17,6 +19,6 @@ class ArticleController < ApplicationController
     a.image =  params[:file]
     a.save
     url = a.image.url
-       render json: { url: url }
+    render json: { url: url }
   end
 end
