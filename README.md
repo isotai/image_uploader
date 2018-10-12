@@ -6,12 +6,13 @@
 
 
 # To do
-- [ ] viewの実装
-- [ ] モデルの作成
+- [x] viewのみため実装
+- [x] モデルの作成
+- [x] carrierwaveセットアップ
 - [ ] ドラックアンドドロップで画像をサーバーに送付する機能
 - [ ] サーバーサイドで画像を保存する機能
 - [ ] 画像アップロード後に編集画面に画像URLとかを表示させる
-- [ ] onchangeで編集画面のテキストを送付する。
+- [ ] キーの最後で編集画面のテキストを送付する。
 - [ ] Markdownをhtmlに変換して保存する
 - [ ] 保存したhtmlテキストをクラアントに返す。
 - [ ] クライアント側で表示する。
@@ -26,7 +27,7 @@ mount_uploader :image,ImageUploader
 - id
 - name
 - text
-- image 
+- image
 ```rails g migration add_image_to_users avatar:string```
 
 **ImageUploader**
@@ -39,7 +40,7 @@ mount_uploader :image,ImageUploader
 画像をアップロードする。ここで非同期アップロード&プレビュー
 
 
-## 考え中
+# 考え中
 
 *画像UP*
 1. 編集画面に画像をドラックアンドドロップ　
@@ -51,18 +52,29 @@ mount_uploader :image,ImageUploader
 
 *プレビューの反映*
 
-1.まずはonchange検知でやる。（フォーカス外さないといけないのげネック。）
+1.まずはonchange検知でやる。（フォーカス外さないといけないのげネック。） --> やっぱり最後文字検知できそう
 **編集画面変更検知**
 https://qiita.com/maruyam-a/items/cf0168f91d934b449a07
 2.検知したらajaxでtextareaのコンテンツ全て送付。
 3.サーバーサイドでHTMLタグに変換
-4.変換済みのHTMLを返して表示 
+4.変換済みのHTMLを返して表示
 
 
-## reference
+
+# reference
+partial だけレンダリングする
+https://qiita.com/fezrestia/items/e669107a4a6e66618738
+https://qiita.com/somewhatgood@github/items/113773747a6faa800366
+
 Markdownする
 https://qiita.com/michiharujp/items/2916d71af273a8b0007f
 
 画像UP
 https://github.com/carrierwaveuploader/carrierwave
 https://blog.otsukasatoshi.com/entry/2016/05/04/185133
+
+入力の最後に発火させる
+https://byuzensen.com/javascript-key-monitoring
+
+ドラックアンドドロップ
+http://www.it-view.net/drag-and-drop-file-upload-jquery-178.html
