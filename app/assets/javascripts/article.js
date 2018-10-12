@@ -61,14 +61,33 @@ $(function () {
       // contentTypeもfalseに指定
       contentType: false
     }).done(function (res) {
-      // 送信せいこう！
-      console.log('SUCCESS', res);
+      // success
+      var url = res.url
+      insertText("(img)" + "[" + url + "]")
+
+
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      // しっぱい！
+      // fail
       console.log('ERROR', jqXHR, textStatus, errorThrown);
     });
 
   }
 
+  function insertText(url) {
+
+    var textarea = document.querySelector('textarea');
+
+    var sentence = textarea.value;
+    var len = sentence.length;
+    var pos = textarea.selectionStart;
+
+    var before = sentence.substr(0, pos);
+    var word = url;
+    var after = sentence.substr(pos, len);
+
+    sentence = before + word + after;
+
+    textarea.value = sentence;
+  };
 
 });

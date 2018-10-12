@@ -17,6 +17,6 @@ class ArticleController < ApplicationController
     a.image =  params[:file]
     a.save
     url = a.image.url
-     render json: url
+       render json: { url: url }
   end
 end
